@@ -5,3 +5,36 @@ git commit -m "Initial git repo"
 git remote add origin https://github.com/huynhquocbuu/tedu-ddd-exam.git
 git branch - M main
 git push -u origin main
+
+git checkout -b develop
+git push --set-upstream origin develop
+
+git checkout -b lesson/12
+git push --set-upstream origin lesson/12
+
+---Tạo cấu trúc dự án----
+dotnet new sln -n tedu-ddd-exam
+
+dotnet new webapi -o src/Identity.API
+dotnet new webapi -o src/Examination/Examination.API
+dotnet new classlib -o src/Examination/Examination.Application
+dotnet new classlib -o src/Examination/Examination.Domain
+dotnet new classlib -o src/Examination/Examination.Infrastructure
+
+
+dotnet new xunit -o tests/Examination/Examination.Infrastructure.IntegrationTests
+dotnet new xunit -o tests/Examination/Examination.Application.UnitTests
+dotnet new xunit -o tests/Examination/Examination.Domain.UnitTests
+dotnet new xunit -o tests/Identity.API/Identity.API.IntegrationTests
+
+dotnet sln add src/Identity.API/Identity.API.csproj --solution-folder src
+dotnet sln add src/Examination/**/*.csproj --solution-folder src
+
+dotnet sln add tests/Identity.API/Identity.API.IntegrationTests/Identity.API.IntegrationTests.csproj --solution-folder tests/Identity.API
+dotnet sln add tests/Examination/**/*.csproj --solution-folder tests/Examination
+
+dotnet new xunit -o tests/Examination/Examination.API.IntegrationTests
+dotnet sln add tests/Examination/Examination.API.IntegrationTests/Examination.API.IntegrationTests.csproj --solution-folder tests/Examination
+
+dotnet build
+
