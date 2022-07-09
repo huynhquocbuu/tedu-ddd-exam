@@ -1,0 +1,7 @@
+git init
+git add *
+git commit -m "Initial git repo"
+
+git remote add origin https://github.com/huynhquocbuu/tedu-ddd-exam.git
+git branch - M main
+git push -u origin main
