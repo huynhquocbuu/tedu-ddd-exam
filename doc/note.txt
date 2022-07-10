@@ -38,3 +38,6 @@ dotnet sln add tests/Examination/Examination.API.IntegrationTests/Examination.AP
 
 dotnet build
 
+dotnet ef migrations add Initial --context ApplicationDbContext
+dotnet ef migrations add Initial --context ConfigurationDbContext
+dotnet ef migrations add Initial --context PersistedGrantDbContext
